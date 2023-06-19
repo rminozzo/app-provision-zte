@@ -77,42 +77,42 @@ export const AuthBridge = () => {
     //console.log(`SLOT: ${slot} PON: ${pon} ONU: ${onu} SN: ${sn}`);
     return (
         <>
-        <Header/>
-            <div class="w-full mx-auto bg-gray-100">
+            <div class="mx-auto h-screen bg-slate-300">
+                <Header />
                 {status.type === 'error' ? alert(status.mensagem) : ""}
                 {status.type === 'success' ? toDash() : ""}
-                {status.loading === true ? <Spinner/> : ""}
-                
-                    <form class="w-1/2 mx-auto m-1" onSubmit={authOnt}>
+                {status.loading === true ? <Spinner /> : ""}
+
+                <form class="w-1/2 mx-auto mt-2" onSubmit={authOnt}>
                     <div class="flex grid gap-2">
-                        <div class="mb-2">
+                        <div>
                             <label class="block mb-2 text-sm font-bold text-gray-900" >SLOT: </label>
-                            <input class="w-full h-12 px-4 mb-2 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="slot" value={slot} onChange={e => setSlot(e.target.value)} disabled></input>
+                            <input class="w-full h-10 px-4 mb-1 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="slot" value={slot} onChange={e => setSlot(e.target.value)} disabled></input>
                         </div>
-                        <div class="mb-2">
+                        <div>
                             <label class="block mb-2 text-sm font-bold text-gray-900" >PON: </label>
-                            <input class="w-full h-12 px-4 mb-2 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="pon" value={pon} onChange={e => setPon(e.target.value)} disabled></input>
+                            <input class="w-full h-10 px-4 mb-1 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="pon" value={pon} onChange={e => setPon(e.target.value)} disabled></input>
                         </div>
-                        <div class="mb-2">
+                        <div>
                             <label class="block mb-2 text-sm font-bold text-gray-900" >ONU ID: </label>
-                            <input class="w-full h-12 px-4 mb-2 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="onu" value={onu} onChange={e => setOnu(e.target.value)} disabled></input>
+                            <input class="w-full h-10 px-4 mb-1 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="onu" value={onu} onChange={e => setOnu(e.target.value)} disabled></input>
                         </div>
-                        <div class="mb-2">
+                        <div>
                             <label class="block mb-2 text-sm font-bold text-gray-900" >SN: </label>
-                            <input class="w-full h-12 px-4 mb-2 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="sn" value={sn} onChange={e => setSn(e.target.value)} disabled></input>
+                            <input class="w-full h-10 px-4 mb-1 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="sn" value={sn} onChange={e => setSn(e.target.value)} disabled></input>
                         </div>
-                        <div class="mb-2">
+                        <div>
                             <label class="block mb-2 text-sm font-bold text-gray-900" >NOME: </label>
-                            <input class="w-full h-12 px-4 mb-2 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="nome" onChange={e => setNome(e.target.value)} required></input>
+                            <input class="w-full h-10 px-4 mb-1 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="nome" onChange={e => setNome(e.target.value)} required></input>
                         </div>
-                        <div class="mb-2">
-                            <label class="block mb-2 text-sm font-bold text-gray-900" >VLAN: </label>
-                            <input class="w-full h-12 px-4 mb-2 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="vlan" onChange={e => setVlan(e.target.value)} required></input>
+                        <div>
+                            <label class="block mb-2 text-sm font-bold text-gray-900" >VLAN Bridge: </label>
+                            <input class="w-full h-10 px-4 mb-2 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="vlan" onChange={e => setVlan(e.target.value)} required></input>
                         </div>
 
-                        <button  class="w-1/2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2 rounded mb-3" type="submit">Provisonar</button>
-                        </div>
-                    </form>
+                        <button class="w-1/2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2 rounded mb-3" type="submit">Provisonar</button>
+                    </div>
+                </form>
             </div>
         </>
     )

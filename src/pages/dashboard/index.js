@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from 'react-router-dom';
-import  Hearder  from '../../components/Header'
+import  Hearder  from '../../components/Header';
 
 import api from '../../config/api';
 
@@ -43,11 +43,9 @@ export const Dashboard = () => {
 
   return (
     <>
-      <Hearder/>
-      <div class="container mx-auto bg-slate-200">
-        
-          <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-            <table class="w-1/2 mx-auto text-center m-2" >
+    <div class=" mx-auto h-screen bg-slate-200">
+      <Hearder/>     
+            <table class="container w-1/2 mx-auto text-center mt-3" >
               <thead class="border-b bg-gray-600">
                 <tr>
                   <th scope="col" class="text-sm text-white font-bold">Slot</th>
@@ -74,7 +72,7 @@ export const Dashboard = () => {
                 ))}
               </tbody>
             </table>
-          </div>
+          
         
       </div>
     </>
