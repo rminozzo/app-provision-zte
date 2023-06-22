@@ -7,7 +7,6 @@ import api from '../../config/api';
 export const Dashboard = () => {
 
   const [data, setData] = useState([]);
-
   const { state } = useLocation();
   const [status, setStatus] = useState({
     type: state ? state.type : "",
