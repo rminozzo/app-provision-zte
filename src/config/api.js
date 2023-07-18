@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export default axios.create({
-    baseURL: 'https://api.adyl.net.br/api-provision-zte/'
+    baseURL: 'http://localhost:3001'
 });

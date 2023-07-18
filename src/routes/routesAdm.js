@@ -6,6 +6,7 @@ import { AuthBridge } from '../pages/Auth-Bridge';
 import { AuthPhone } from '../pages/Auth-Phone';
 import { SearchOnu } from '../pages/Search-ONU';
 import { AddService } from '../pages/Add-Serice'
+import { OLTs } from "../pages/OLTs-List";
 
 export default function RoutesAdm() {
 
@@ -17,6 +18,7 @@ export default function RoutesAdm() {
             <Route path='/autorizar-phone' element={<AuthPhone />} />
             <Route path='/search-onu' element={<SearchOnu />} />
             <Route path='/add-service' element={<AddService />} />
+            <Route path='/list-olt' element={<OLTs/>} />
         </Routes>
     )
 }
