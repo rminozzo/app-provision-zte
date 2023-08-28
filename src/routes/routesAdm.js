@@ -1,6 +1,6 @@
 import { Route, Routes} from "react-router-dom";
 
-import {Dashboard} from '../pages/dashboard';
+import {ListOnu} from '../pages/List-Onu';
 import { AuthRouter } from '../pages/Auth-router';
 import { AuthBridge } from '../pages/Auth-Bridge';
 import { AuthPhone } from '../pages/Auth-Phone';
@@ -12,13 +12,14 @@ export default function RoutesAdm() {
 
     return(
         <Routes>
-            <Route path='/' element={<Dashboard />} />
+            <Route path='/' element={<OLTs/>} />
+            <Route path='/list-onu' element={<ListOnu />} />
             <Route path='/autorizar-router' element={<AuthRouter />} />
             <Route path='/autorizar-bridge' element={<AuthBridge />} />
             <Route path='/autorizar-phone' element={<AuthPhone />} />
             <Route path='/search-onu' element={<SearchOnu />} />
             <Route path='/add-service' element={<AddService />} />
-            <Route path='/list-olt' element={<OLTs/>} />
+            
         </Routes>
     )
 }
