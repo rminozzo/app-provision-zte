@@ -11,7 +11,11 @@ export const AuthPhone = () => {
     const [onu, setOnu] = useState('');
     const [sn, setSn] = useState('');
     const [nome, setNome] = useState('');
-    const [vlan, setVlan] = useState('');
+    const [ip, setIp] = useState('');
+    const [id, setId] = useState('');
+    const [telnet_port, setTelnet_port] = useState('');
+    const [vlan_dados, setVlan_dados] = useState('');
+    const [vlan_mgmt, setVlan_mgmt] = useState('');
     const [vlanTel, setVlanTel] = useState('');
 
     useEffect(() => {
@@ -20,6 +24,9 @@ export const AuthPhone = () => {
         setPon(url.get("port"))
         setOnu(url.get("onu"))
         setSn(url.get("sn"))
+        setIp(url.get("ip"))
+        setId(url.get("id"))
+        setTelnet_port(url.get("telnet_port"))
     }, []);
 
     const [status, setStatus] = useState({
@@ -39,7 +46,7 @@ export const AuthPhone = () => {
         e.preventDefault();
 
         await api.post("/api-phone/auth-phone", {
-            slot, pon, onu, sn, nome, vlan, vlanTel
+            slot, pon, onu, sn, nome, vlan_dados, vlan_mgmt, vlanTel, telnet_port, ip
         })
             .then((response) => {
                 setStatus({
@@ -67,7 +74,7 @@ export const AuthPhone = () => {
     }
 
     const toDash = () => {
-        navigate("/", {
+        navigate(`/list-onu?id=${id}&ip=${ip}&telnet_port=${telnet_port}`, {
             state: {
                 type: "success",
                 message: status.message
@@ -107,10 +114,14 @@ export const AuthPhone = () => {
                             <label class="block mb-2 text-sm font-bold text-gray-900" >NOME: </label>
                             <input class="w-full h-10 px-4 mb-2 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="nome" onChange={e => setNome(e.target.value)} required></input>
                         </div>
+                        <div >
+                            <label class="block mb-2 text-sm font-bold text-gray-900" >VLAN GERENCIA: </label>
+                            <input class="w-full h-10 px-4 mb-2 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="vlan_mgmt" onChange={e => setVlan_mgmt(e.target.value)}  required></input>
+                        </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
                                 <label class="block mb-2 text-sm font-bold text-gray-900" >VLAN PPPoE: </label>
-                                <input class="w-full h-10 px-4 mb-2 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="vlan" onChange={e => setVlan(e.target.value)} required></input>
+                                <input class="w-full h-10 px-4 mb-2 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="vlan_dados" onChange={e => setVlan_dados(e.target.value)} required></input>
                             </div>
                             <div>
                                 <label class="block mb-2 text-sm font-bold text-gray-900" >VLAN VoIP: </label>

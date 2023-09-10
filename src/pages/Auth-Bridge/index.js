@@ -11,7 +11,11 @@ export const AuthBridge = () => {
     const [onu, setOnu] = useState('');
     const [sn, setSn] = useState('');
     const [nome, setNome] = useState('');
-    const [vlan, setVlan] = useState('');
+    const [ip, setIp] = useState('');
+    const [id, setId] = useState('');
+    const [telnet_port, setTelnet_port] = useState('');
+    const [vlan_dados, setVlan_dados] = useState('');
+    const [vlan_mgmt, setVlan_mgmt] = useState('');
 
     useEffect(() => {
         const url = new URLSearchParams(window.location.search)
@@ -19,6 +23,9 @@ export const AuthBridge = () => {
         setPon(url.get("port"))
         setOnu(url.get("onu"))
         setSn(url.get("sn"))
+        setIp(url.get("ip"))
+        setId(url.get("id"))
+        setTelnet_port(url.get("telnet_port"))
     }, []);
 
     const [status, setStatus] = useState({
@@ -38,7 +45,7 @@ export const AuthBridge = () => {
         e.preventDefault();
 
         await api.post("/api-bridge/auth-bridge", {
-            slot, pon, onu, sn, nome, vlan
+            slot, pon, onu, sn, nome, vlan_dados, vlan_mgmt, ip, telnet_port
         })
             .then((response) => {
                 setStatus({
@@ -66,7 +73,7 @@ export const AuthBridge = () => {
     }
 
     const toDash = () => {
-        navigate("/", {
+        navigate(`/list-onu?id=${id}&ip=${ip}&telnet_port=${telnet_port}`, {
             state: {
                 type: "success",
                 message: status.message
@@ -105,9 +112,13 @@ export const AuthBridge = () => {
                             <label class="block mb-2 text-sm font-bold text-gray-900" >NOME: </label>
                             <input class="w-full h-10 px-4 mb-1 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="nome" onChange={e => setNome(e.target.value)} required></input>
                         </div>
-                        <div>
-                            <label class="block mb-2 text-sm font-bold text-gray-900" >VLAN Bridge: </label>
-                            <input class="w-full h-10 px-4 mb-2 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="vlan" onChange={e => setVlan(e.target.value)} required></input>
+                        <div >
+                            <label class="block mb-2 text-sm font-bold text-gray-900" >VLAN GERENCIA: </label>
+                            <input class="w-full h-10 px-4 mb-2 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="vlan_mgmt" onChange={e => setVlan_mgmt(e.target.value)} required></input>
+                        </div>
+                        <div >
+                            <label class="block mb-2 text-sm font-bold text-gray-900" >VLAN DADOS: </label>
+                            <input class="w-full h-10 px-4 mb-2 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="vlan_dados" onChange={e => setVlan_dados(e.target.value)} required></input>
                         </div>
 
                         <button class="w-1/2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2 rounded mb-3" type="submit">Provisonar</button>
