@@ -9,7 +9,7 @@ function Header() {
                 <a class="no-underline hover:no-underline" href="/">
                     <img src="/images/adylnetelecomNovo_branco.png" width="40" height="40" class="mr-7 sm:h-17" alt="Adylnet Logo" />
                 </a>
-               <Link to={"/search-onu"}> <button class="py-2 pr-4 pl-3 hover:bg-transparent p-1 text-white"> Buscar ONU</button></Link>
+              {/* <Link to={"/search-onu"}> <button class="py-2 pr-4 pl-3 hover:bg-transparent p-1 text-white"> Buscar ONU</button></Link> */ }
             </div>
         </nav>
     )
