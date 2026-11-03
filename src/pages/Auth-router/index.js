@@ -111,10 +111,12 @@ export const AuthRouter = () => {
                             <label class="block mb-2 text-sm font-bold text-gray-900" >NOME: </label>
                             <input class="w-full h-10 px-4 mb-1 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="nome" onChange={e => setNome(e.target.value)} required></input>
                         </div>
+                        {/*
                         <div >
                             <label class="block mb-2 text-sm font-bold text-gray-900" >VLAN GERENCIA: </label>
                             <input class="w-full h-10 px-4 mb-2 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="vlan_mgmt" onChange={e => setVlan_mgmt(e.target.value)} required></input>
                         </div>
+                        */}
                         <div >
                             <label class="block mb-2 text-sm font-bold text-gray-900" >VLAN DADOS: </label>
                             <input class="w-full h-10 px-4 mb-2 text-lg text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="vlan_dados" onChange={e => setVlan_dados(e.target.value)} required></input>
