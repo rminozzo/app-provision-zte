@@ -15,7 +15,7 @@ export const AuthRouter = () => {
     const [id, setId] = useState('');
     const [telnet_port, setTelnet_port] = useState('');
     const [vlan_dados, setVlan_dados] = useState('');
-    const [vlan_mgmt, setVlan_mgmt] = useState('');
+    //const [vlan_mgmt, setVlan_mgmt] = useState('');
 
     useEffect(() => {
         const url = new URLSearchParams(window.location.search)
@@ -45,7 +45,7 @@ export const AuthRouter = () => {
         e.preventDefault();
 
         await api.post("/api-router/auth-routing", {
-            slot, pon, onu, sn, nome, vlan_dados, vlan_mgmt, ip, telnet_port
+            slot, pon, onu, sn, nome, vlan_dados, ip, telnet_port
         })
             .then((response) => {
                 setStatus({
